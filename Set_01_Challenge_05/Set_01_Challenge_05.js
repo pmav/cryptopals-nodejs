@@ -37,7 +37,6 @@ function bytes2hex(bytes) {
   for (var i = 0; i < bytes.length; i++) {
     output += parseInt(bytes[i].substring(0, 4), 2).toString(16);
     output += parseInt(bytes[i].substring(4, 8), 2).toString(16);
-    output += ' ';
   }
 
   return output;
@@ -47,7 +46,6 @@ function str2bytes(input) {
   var bytes = [];
 
   for (var i = 0; i < input.length; i++) {
-    console.log(input[i]);
     var byte = input.charCodeAt(i).toString(2);
     bytes.push(pad(byte));
   }
@@ -60,15 +58,14 @@ function pad(input) {
 }
 
 function main() {
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    terminal: false
+  var content = Buffer.alloc(0);
+  process.stdin.resume();
+  process.stdin.on('data', function(buf) { content = Buffer.concat([content, buf]) });
+  process.stdin.on('end', function() {
+      // your code here
+      processInput(content.toString());
   });
 
-  rl.on('line', function(line) {
-      processInput(line);
-  });
 }
 
 main();

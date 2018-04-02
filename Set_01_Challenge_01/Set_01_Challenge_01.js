@@ -1,3 +1,9 @@
+module.exports = {
+  main: function(input) {
+    return main(input);
+  }
+};
+
 var input = '49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d';
 
 var table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -22,7 +28,7 @@ function bin2dec(binary) {
 }
 
 
-function main() {
+function m() {
   var binaryString = hex2bin(input);
 
   var output = '';
@@ -31,7 +37,11 @@ function main() {
     output += table[bin2dec(token)];
   }
 
-  console.log(output);
+  return output;
 }
 
-main();
+function main() {
+  console.log(m(input););
+}
+
+//main();
